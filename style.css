@@ -14,6 +14,47 @@ body{
 }
 
 
+.deposit{
+    background-color:slateblue;
+    color: white;
+}
 
+.withdraw{
+    color: white;
+    background-color:lightsalmon;
+}
+
+.balance{
+    color: white;
+    background-color: orange;
+}
+
+
+.status{
+    margin: 0px 20px;
+    padding:20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.box{
+    box-shadow: 5px 5px 10px lightgray;
+}
+
+.area{
+    margin-top: 70px;
+}
+
+#vioToOrchid{
+    transition: 0.5s;
+}
+
+#color2{
+    transition: 0.5s;
+}
+
+#color3{
+    transition: 0.5s;
+}
 
 

@@ -24,10 +24,54 @@
 
 
 <div id="transaction-area">
-        <h1 class = "text-center">transition Area</h1>
+        <div class="row">
+            <div class="col-md-4" >
+                <div class="deposit status" id="vioToOrchid">
+                    <h5>Deposit</h5>
+                <h2>$<span id="currentDeposit">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="withdraw status" id="color2">
+                    <h5>Withdraw</h5>
+                <h2>$<span id="">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="balance status" id="color3">
+                    <h5>Balance</h5>
+                <h2>$<span id="currentBalance">1240</span></h2>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    <div class="row area">
+        <div class="col-md-6 ">
+            <div class="submit-area">
+                <h4>Deposit</h4>
+            <input type="text" id="depositAmount" class="form-control" placeholder="$ amount you want to deposit">
+            <br>
+            <button class="btn btn-success" id="addDeposit">Deposit</button>
+            </div>
+        </div>
+
+
+        <div class="col-md-6 space">
+            <div class="submit-area">
+            <h4>Withdraw</h4>
+            <input id="withdrawAmount" type="text" class="form-control" placeholder="$ amount you want to deposit">
+            <br>
+            <button id = "addWithdraw" class="btn btn-success">Withdraw</button>
+            </div>
+        </div>
+    </div>
+
+
     </div> 
-
-
 
     <script>
 
@@ -37,36 +81,78 @@
         hide.style.display = 'none';
         const replace = document.getElementById('transaction-area');
         replace.style.display = 'block';
+    });
 
-    
 
+    //hover color change
+
+    const colorChange1 = document.getElementById('vioToOrchid');
+    colorChange1.addEventListener('mouseover', function () {
+      colorChange1.style.backgroundColor = 'orchid';  
+    });
+
+    const colorChange2 = document.getElementById('color2');
+    colorChange2.addEventListener('mouseover', function () {
+      colorChange2.style.backgroundColor = 'lightgreen';  
+    })
+
+    const colorChange3 = document.getElementById('color3');
+    colorChange3.addEventListener('mouseover', function () {
+      colorChange3.style.backgroundColor = 'hotpink';  
     })
 
 
+    //deposit button event handler
 
+        const depositBtn = document.getElementById('addDeposit');
+        depositBtn.addEventListener('click', function () {
+            const depositNumber = getInputNumber('depositAmount');
 
+            updateSpanText ('currentDeposit', depositNumber);
+            updateSpanText ('currentBalance', depositNumber);
+           
+            document.getElementById('depositAmount').value = "";
+        })
 
-    // const loginBtn = document.getElementById('login');
-    // loginBtn.addEventListener('click', function(){
-    //     const hideLogin = document.getElementById('login-area');
-    //     hideLogin.style.display = 'none';
-    // })
+        //withdraw button event handler
+        const withdrawBtn = document.getElementById('addWithdraw');
+        withdrawBtn.addEventListener('click', function () {
 
+            const withdrawNumber = getInputNumber("withdrawAmount");
+            console.log(withdrawNumber);
+           
+        })
 
+        function getInputNumber(id) {
+            const amount = document.getElementById(id).value;
+            const amountNumber = parseFloat(amount);
+            return amountNumber;
+        }
 
+        function updateSpanText(id, depositNumber) {
+            const current = document.getElementById(id).innerText;
+            const currentNumber = parseFloat(current);
+            const total = currentNumber + depositNumber;
+            document.getElementById(id).innerText = total;
+        }
 
-        // const loginBtn = document.getElementById('login');
-        // loginBtn.addEventListener('click', function () {
-        //     const loginArea = document.getElementById('login-area');
-        //     loginArea.style.display = 'none';     
-        
-        // const transactionArea = document.getElementById('transaction-area');
-        // transactionArea.style.display = "block";
-            
-        // })
-        
+       
+    
     </script>
 
 
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
